@@ -57,6 +57,7 @@
   "rpc_clanWar_SetTargetMark":          { "message": "Война: назначение на цель" },
   "rpc_clanWarAttack":                  { "message": "Война: старт атаки" },
   "rpc_clanWarEndBattle":               { "message": "Война: результат боя" },
+  "rpc_clanTrainings_getAll":           { "message": "Тренировки: бои гильдии" },
   "rpc_inventoryGet":                   { "message": "Инвентарь игрока" },
   "rpc_heroGetAll":                     { "message": "Прогресс героев" },
   "rpc_titanGetAll":                    { "message": "Прогресс титанов" },

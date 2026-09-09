@@ -57,6 +57,7 @@
   "rpc_clanWar_SetTargetMark":          { "message": "War: target assignment" },
   "rpc_clanWarAttack":                  { "message": "War: attack start" },
   "rpc_clanWarEndBattle":               { "message": "War: battle result" },
+  "rpc_clanTrainings_getAll":           { "message": "Training: guild battles" },
   "rpc_inventoryGet":                   { "message": "Player inventory" },
   "rpc_heroGetAll":                     { "message": "Heroes progress" },
   "rpc_titanGetAll":                    { "message": "Titans progress" },
