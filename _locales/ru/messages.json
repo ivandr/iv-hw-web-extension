@@ -68,6 +68,7 @@
   "rpc_shopGet":                        { "message": "Эвенты: магазины событий" },
   "rpc_shopGetMany":                    { "message": "Эвенты: магазины событий (батч)" },
   "rpc_remoteConfigInit":               { "message": "Эвенты: ссылки на цепочки" },
+  "rpc_indexGet":                       { "message": "CDN: индекс ассетов игры" },
   "rpc_specialQuestInit":               { "message": "Эвенты: сезонные (расписание)" },
   "rpc_specialQuestEvents":             { "message": "Эвенты: сезонные (вкладки)" },
   "rpc_getSpecialQuestState":           { "message": "Эвенты: сезонные (расписание и вкладки)" },

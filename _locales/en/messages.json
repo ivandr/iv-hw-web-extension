@@ -68,6 +68,7 @@
   "rpc_shopGet":                        { "message": "Events: event shops" },
   "rpc_shopGetMany":                    { "message": "Events: event shops (batch)" },
   "rpc_remoteConfigInit":               { "message": "Events: chain config URLs" },
+  "rpc_indexGet":                       { "message": "CDN: game asset index" },
   "rpc_specialQuestInit":               { "message": "Events: seasonal (schedule)" },
   "rpc_specialQuestEvents":             { "message": "Events: seasonal (tabs)" },
   "rpc_getSpecialQuestState":           { "message": "Events: seasonal (schedule & tabs)" },

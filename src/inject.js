@@ -43,6 +43,14 @@
     'questGetAll',
     'questGetEvents',
     'remoteConfigInit',
+    // --- Индекс CDN-ассетов ---
+    // indexGet — pre-login вызов (x-auth-session-init) при старте клиента. В ответе URL
+    // индекса ассетов текущей версии игры (`currentVersionIndex` → index.latest.json.gz)
+    // и база CDN (`index.static`). Контент, дозалитый в уже выпущенную сборку (новые
+    // облики, пикеры, монеты), лежит по путям `vNNNN/<md5>/extends/...` — хеш пакета
+    // перебором не подобрать, только по индексу. Бэк качает индекс сам, регистрирует
+    // картинки в реестре и шлёт дифф версий в Telegram.
+    'indexGet',
     // --- Сезонные эвенты «Царства» (liveOps-механика specialQuest) ---
     // С 2026-08-10 расписание тиров и состав вкладок игра тянет HTTP-RPC'ом
     // getSpecialQuestState на холодном старте (в вызове новое поле "feature":"quest").
