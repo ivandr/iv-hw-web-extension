@@ -86,9 +86,13 @@
     'rune_getAll',
     'set_getAll',
     'talisman_getAll',
-    'getHeroSummary'
+    'getHeroSummary',
     // getSummary в этот список НЕ входит: он обрабатывается отдельно в resolveMethod()
     // и уходит на бэк как research_getSummary — см. комментарий там.
+    
+    // ----- для макросов -----
+    'eternalStory_getState', // текущая защита в рубеже
+    'dungeonGetInfo', // текущий прогресс в подземельях
   ]);
 
   // Нативные console-методы захватываем на document_start: игра позже подменяет

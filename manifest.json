@@ -32,6 +32,15 @@
     },
     {
       "matches": [
+        "https://*.hero-wars-alliance.com/*"
+      ],
+      "js": ["src/macro/engine.js"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
         "https://warden.pankov.dev/*",
         "https://hw-warden.com/*",
         "https://www.hw-warden.com/*",
