@@ -54,5 +54,5 @@
     "https://*.nextersglobal.com/*",
     "http://localhost/*"
   ],
-  "permissions": ["storage", "cookies", "webRequest", "downloads", "alarms"]
+  "permissions": ["storage", "cookies", "webRequest", "downloads"]
 }

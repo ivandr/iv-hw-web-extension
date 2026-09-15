@@ -39,10 +39,9 @@ MAIN world страницы игры   isolated world (bridge, UI) service worke
 | | PROD (Chrome Web Store) | DEV (Load unpacked) |
 |---|---|---|
 | Цели отправки | только `api.hw-warden.com` | fan-out: `localhost:9102` **и** прод параллельно |
-| CDN asset collector (`/api/hw/asset/seen`) | — | ✔ |
 | Gamedata dumper (splitlib / переводы / remote-config → Chrome Downloads `HW/data/<версия>/`) | — | ✔ |
 
-DEV-only функциональность опирается на permissions `webRequest`, `downloads`, `alarms`
+DEV-only функциональность опирается на permissions `webRequest`, `downloads`
 и CDN-хосты в `host_permissions` — всё это вырезается из prod-сборки скриптом `build.ps1`.
 
 Легаси-хост `warden-api.pankov.dev` ведёт на тот же бэкенд и доживает переходный
@@ -79,4 +78,3 @@ DEV-only permissions и localhost-матчи. Детали и причины —
   раздаёт по доменным импортёрам.
 - `POST /api/auth/exchange` — по `user_getClanInfo` апсертит пользователя/гильдию и
   возвращает JWT для сессии сайта.
-- `POST /api/hw/asset/seen` — DEV-only реестр замеченных CDN-ассетов (`hw.game_asset`).

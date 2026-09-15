@@ -38,7 +38,6 @@
   "status_synced":     { "message": "Синхронизировано · $1" },
 
   "toast_sent":  { "message": "↑ Отправлено" },
-  "toast_asset": { "message": "↑ CDN-ассет"  },
 
   "rpc_user_getClanInfo":               { "message": "Профиль и гильдия" },
   "rpc_clanClash_getUserClanResult":    { "message": "Столкновение: результаты дня" },

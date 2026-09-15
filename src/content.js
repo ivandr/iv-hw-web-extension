@@ -99,9 +99,6 @@
       transform: translateX(24px);
       transition: opacity ${TOAST_FADE_MS}ms ease, transform ${TOAST_FADE_MS}ms ease;
     }
-    .hw-ext-toast.hw-ext-asset {
-      border-left-color: #3b82f6;
-    }
     .hw-ext-toast.hw-ext-visible {
       opacity: 0.95;
       transform: translateX(0);
@@ -114,18 +111,10 @@
       font-weight: 700;
       margin-bottom: 2px;
     }
-    .hw-ext-toast.hw-ext-asset .hw-ext-toast-label {
-      color: #60a5fa;
-    }
     .hw-ext-toast .hw-ext-toast-method {
       font-size: 12px;
       font-weight: 600;
       color: #e5e7eb;
-    }
-    .hw-ext-toast.hw-ext-asset .hw-ext-toast-method {
-      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-      font-size: 11px;
-      word-break: break-all;
     }
   `;
 
@@ -198,26 +187,16 @@
 
   function showToast(method) {
     spawnToast({
-      variant: 'rpc',
       titleAttr: method,
       labelText: HWI18N.t('toast_sent'),
       bodyText: labelFor(method),
     });
   }
 
-  function showAssetToast(assetPath) {
-    spawnToast({
-      variant: 'asset',
-      titleAttr: assetPath,
-      labelText: HWI18N.t('toast_asset'),
-      bodyText: assetPath,
-    });
-  }
-
-  function spawnToast({ variant, titleAttr, labelText, bodyText }) {
+  function spawnToast({ titleAttr, labelText, bodyText }) {
     const container = ensureToastContainer();
     const toast = document.createElement('div');
-    toast.className = 'hw-ext-toast' + (variant === 'asset' ? ' hw-ext-asset' : '');
+    toast.className = 'hw-ext-toast';
     toast.title = titleAttr;
 
     const label = document.createElement('div');
@@ -244,18 +223,12 @@
     }, TOAST_DURATION_MS);
   }
 
-  // Background после успешного flush броадкастит сюда имена методов / пути ассетов.
+  // Background после успешного flush броадкастит сюда имена отправленных методов.
   chrome.runtime.onMessage.addListener((msg) => {
     if (!msg) return;
     if (msg.type === 'hw-toast' && Array.isArray(msg.methods)) {
       for (const method of msg.methods) {
         if (typeof method === 'string' && method.length) showToast(method);
-      }
-      return;
-    }
-    if (msg.type === 'hw-asset-toast' && Array.isArray(msg.assetPaths)) {
-      for (const path of msg.assetPaths) {
-        if (typeof path === 'string' && path.length) showAssetToast(path);
       }
       return;
     }

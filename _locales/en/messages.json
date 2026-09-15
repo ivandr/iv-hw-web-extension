@@ -38,7 +38,6 @@
   "status_synced":     { "message": "Synced · $1" },
 
   "toast_sent":  { "message": "↑ Sent" },
-  "toast_asset": { "message": "↑ CDN asset" },
 
   "rpc_user_getClanInfo":               { "message": "Profile and guild" },
   "rpc_clanClash_getUserClanResult":    { "message": "Clash: daily results" },

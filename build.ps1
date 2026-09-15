@@ -12,8 +12,8 @@
 # в DEV-сборке Load unpacked для fan-out на локальный ms-hw). На прод-копии в Chrome Web
 # Store фетчи на localhost не идут (chrome.management.getSelf().installType=='normal' →
 # targets=[PROD] only), и broad-permission на localhost только провоцирует ревьюеров.
-# Также вырезаются DEV-only: heroesmobile-a-cdn (asset URL collector) + hwmb-remote-config-cdn
-# (gamedata dumper) host_permissions и `webRequest`/`downloads` permissions.
+# Также вырезаются DEV-only: nextersglobal.com host_permissions и `webRequest`/`downloads`
+# permissions (gamedata dumper — splitlib/переводы/remote-config в Chrome Downloads).
 #
 # Почему такой рукопашный способ: PowerShell 5.1 (Windows по умолчанию) в
 # CreateFromDirectory пишет пути с backslash-ами — ZIP-спецификация требует
@@ -59,8 +59,8 @@ try {
     # manifest.json в корне архива — без `http://localhost/*` в host_permissions
     # И без localhost-матчей в content_scripts (нужны только для DEV Load unpacked,
     # в prod-копии лишний broad-match привлекает внимание ревьюеров CWS).
-    # Также вырезаем DEV-only фичи: CDN asset collector (heroesmobile-a-cdn host + webRequest
-    # permission) — он живёт только в DEV-сборке для пополнения hw.game_asset у разработчика.
+    # Также вырезаем DEV-only фичи: gamedata dumper (nextersglobal.com host + webRequest/downloads
+    # permissions) — он живёт только в DEV-сборке для выгрузки дампов у разработчика.
     $prodManifest = Get-Content $manifestPath -Raw -Encoding utf8 | ConvertFrom-Json
 
     $devOnlyHostRegex = '^(http://localhost|https://[^/]*\.nextersglobal\.com)'
@@ -71,8 +71,7 @@ try {
         Write-Host "  убрано из host_permissions для prod-сборки: $($stripped -join ', ')" -ForegroundColor DarkGray
     }
 
-    # `alarms` — ретрай недоставленных asset/seen батчей, живёт только в DEV asset collector'е.
-    $devOnlyPerms = @('webRequest', 'downloads', 'alarms')
+    $devOnlyPerms = @('webRequest', 'downloads')
     $permsKept     = @($prodManifest.permissions | Where-Object { $devOnlyPerms -notcontains $_ })
     $permsStripped = @($prodManifest.permissions | Where-Object { $devOnlyPerms -contains $_ })
     $prodManifest.permissions = $permsKept
